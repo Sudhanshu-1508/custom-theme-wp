@@ -14,8 +14,3 @@ function themeslug_enqueue_style() {
 add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_style' );
 
 //"cURL error 60: SSL certificate problem: self signed certificate"
-
-
-function cust_filt() {
-    
-}
