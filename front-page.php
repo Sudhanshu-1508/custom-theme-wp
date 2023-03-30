@@ -1,15 +1,5 @@
 <?php get_header("header.php");?>
 
-
-<php
-
-
-
-
-    
-
-?>
-
 <div class="header">
   <h2>Blog Name</h2>
 </div>
@@ -48,7 +38,27 @@
   </div>
 </div>
 
+<?php
+if ( have_posts() ) {
+    while ( have_posts() ) {
 
-
-
-<?php  get_footer("footer.php"); ?>
+        get_template_part( 'template-parts/content', 'page' );
+        the_post();
+        ?>
+        <div class="card">
+        <h2><?php the_title(); ?></h2>
+        <div><?php the_content(); ?></div></div>
+        <?php
+        
+    }
+}
+query_posts(array(
+  'post_type' => 'news'
+)); ?>
+<?php
+while (have_posts()) : the_post(); ?>
+<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+<p><?php the_excerpt(); ?></p>
+<?php endwhile;
+get_footer();
+?>
