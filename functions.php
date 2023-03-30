@@ -15,3 +15,38 @@ function uppercase_title($title) {
 
 add_filter('the_title', 'uppercase_title');
 
+/* Custom Post Type Start */
+
+function create_posttype() {
+register_post_type( 'news',
+array(
+  'labels' => array(
+   'name' => __( 'news' ),
+   'singular_name' => __( 'News' )
+  ),
+  'public' => true,
+  'has_archive' => false,
+  'rewrite' => array('slug' => 'news'),
+ )
+);
+}
+// Hooking up function to theme setup
+add_action( 'init', 'create_posttype' );
+
+
+function create_posttype_2nd() {
+    register_post_type( 'articles',
+    array(
+      'labels' => array(
+       'name' => __( 'articles' ),
+       'singular_name' => __( 'Articles' )
+      ),
+      'public' => true,
+      'has_archive' => false,
+      'rewrite' => array('slug' => 'Articles'),
+     )
+    );
+    }
+    // Hooking up function to theme setup
+    add_action( 'init', 'create_posttype_2nd' );
+    
