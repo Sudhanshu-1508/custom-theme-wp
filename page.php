@@ -18,5 +18,3 @@ if ( have_posts() ) {
         
     }
 }
-
-
