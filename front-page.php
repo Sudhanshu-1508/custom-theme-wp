@@ -1,15 +1,5 @@
 <?php get_header("header.php");?>
 
-
-<php
-
-
-
-
-    
-
-?>
-
 <div class="header">
   <h2>Blog Name</h2>
 </div>
@@ -48,7 +38,20 @@
   </div>
 </div>
 
+<?php
+if ( have_posts() ) {
+    while ( have_posts() ) {
+
+        get_template_part( 'template-parts/content', 'page' );
+        the_post();
+        ?>
+        <div class="card">
+        <h2><?php the_title(); ?></h2>
+        <div><?php the_content(); ?></div></div>
+        <?php
+        
+    }
+}
 
 
-
-<?php  get_footer("footer.php"); ?>
+ get_footer("footer.php"); ?>
